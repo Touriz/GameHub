@@ -5,7 +5,8 @@ import { tap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
-  private api = 'http://localhost:3000/games';
+  //private api = 'http://localhost:3000/games';
+  private api = 'https://gamehubbackend.onrender.com/games';
 
   games = signal<Game[]>([]);
 
