@@ -27,6 +27,7 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
@@ -37,6 +38,8 @@
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
+            "outputPath": "dist/GameHub",
+            "index": "src/index.html",
             "ssr": {
               "entry": "src/server.ts"
             }
@@ -90,6 +93,7 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"

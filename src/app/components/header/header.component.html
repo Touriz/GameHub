@@ -1,0 +1,44 @@
+<header class="sticky top-0 bg-custom-full-bg bg-opacity-80 backdrop-blur text-white px-6 py-4 flex items-center justify-between shadow-md z-50">
+  <!-- Izquierda: Logo, nombre y navegación (solo visible en md o mayor) -->
+  <div class="items-center gap-3 flex-shrink-0 hidden md:flex">
+    <img src="/assets/static/logo.png" alt="Logo" class="h-10 w-10 mr-5" />
+    <span class="text-3xl font-primary tracking-wide relative top-1">GAMEHUB</span>
+    <nav>
+      <ul class="flex gap-12 ml-8">
+        <li><a href="#" class=" text-lg font-secondary hover:text-custom-accent transition">Store</a></li>
+        <li><a href="#" class="text-lg font-secondary hover:text-custom-accent transition">Library</a></li>
+        <li><a href="#" class="text-lg font-secondary hover:text-custom-accent transition">Wishlist</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Menú hamburguesa (solo visible en pantallas pequeñas) -->
+  <button class="md:hidden flex items-center mr-5" aria-label="Abrir menú">
+    <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+
+  <!-- Centro: Barra de búsqueda -->
+  <div class="flex-1 flex justify-center  ml-5 mr-5">
+    <div class="relative w-full max-w-md">
+      <input
+        type="text"
+        placeholder="Search"
+        class="w-full bg-custom-button-bg text-lg px-4 py-2 pl-6 pt-2 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 pr-12 text-left placeholder:text-gray-400 placeholder:font-bold"
+      />
+      <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+          <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </div>
+  </div>
+
+  <!-- Derecha: Botones -->
+  <div class="flex items-center gap-4 flex-shrink-0">
+    <button class="font-primary text-2xl bg-custom-card-bg px-7 py-2 rounded-lg text-white hover:bg-custom-button-bg transition">Log In</button>
+    <button class="font-primary text-2xl hidden lg:inline-flex bg-custom-accent px-5 py-2 rounded-lg text-black hover:bg-green-400 transition relative">Download</button>
+  </div>
+</header>
