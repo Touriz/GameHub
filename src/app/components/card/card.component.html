@@ -2,6 +2,10 @@
   <img [src]="imageUrl" class="w-full h-50 object-cover rounded-t-lg" />
   <div class="p-4">
     <h3 class="text-xl font-bold">{{ title }}</h3>
-    <p class="text-sm text-gray-300">{{ description }}</p>
+    <p class="text-sm text-gray-300 mb-2">{{ description }}</p>
+    <div class="flex items-center justify-between mt-2">
+      <span class="text-lg font-bold text-custom-accent">${{ price }}</span>
+      <span class="text-sm text-gray-400">{{ console }}</span>
+    </div>
   </div>
 </div>
