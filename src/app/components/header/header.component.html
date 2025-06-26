@@ -7,7 +7,7 @@
     <span class="text-3xl font-primary tracking-wide relative top-1">GAMEHUB</span>
     <nav>
       <ul class="flex gap-12 ml-8">
-        <li><a href="#" class="text-lg font-secondary hover:text-custom-accent transition">Store</a></li>
+        <li><a [routerLink]="['/store']" class="text-lg font-secondary hover:text-custom-accent transition">Store</a></li>
         <li><a [routerLink]="['/library']" class="text-lg font-secondary hover:text-custom-accent transition">Library</a></li>
         <li><a href="#" class="text-lg font-secondary hover:text-custom-accent transition">Wishlist</a></li>
       </ul>
@@ -15,11 +15,21 @@
   </div>
 
   <!-- Menú hamburguesa (solo visible en pantallas pequeñas) -->
-  <button class="md:hidden flex items-center mr-5" aria-label="Abrir menú">
+  <button class="md:hidden flex items-center mr-5" aria-label="Abrir menú" (click)="toggleMenu()">
     <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
     </svg>
   </button>
+
+  <!-- Menú desplegable -->
+  <nav *ngIf="isMenuOpen" class="absolute top-20 left-0 w-full bg-custom-full-bg bg-opacity-95 z-50 md:hidden shadow-lg">
+    <ul class="flex flex-col items-center gap-6 py-6">
+      <li><a [routerLink]="['']" class="text-lg font-secondary hover:text-custom-accent transition">Home</a></li>
+      <li><a [routerLink]="['/store']" class="text-lg font-secondary hover:text-custom-accent transition">Store</a></li>
+      <li><a [routerLink]="['/library']" class="text-lg font-secondary hover:text-custom-accent transition">Library</a></li>
+      <li><a href="#" class="text-lg font-secondary hover:text-custom-accent transition">Wishlist</a></li>
+    </ul>
+  </nav>
 
   <!-- Centro: Barra de búsqueda -->
   <div class="flex-1 flex justify-center  ml-5 mr-5">

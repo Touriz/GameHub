@@ -5,20 +5,20 @@ export const routes: Routes = [
     path: '',
     title: 'GameHub',
     loadComponent: () =>
-      import('./pages/storefront/storefront').then((m) => m.Storefront),
+      import('./pages/storefront/storefront.component').then((m) => m.Storefront),
   },
   {
     path: 'library',
     loadComponent: () =>
-      import('./pages/library/library').then(
+      import('./pages/library/library.component').then(
         (m) => m.Library,
       ),
   },
     {
-    path: 'admin',
+    path: 'store',
     loadComponent: () =>
-      import('./pages/admin/admin').then(
-        (m) => m.Admin,
+      import('./pages/store/store.component').then(
+        (m) => m.StoreComponent,
       ),
   },
     {

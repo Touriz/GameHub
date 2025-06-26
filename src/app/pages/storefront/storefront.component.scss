@@ -1,0 +1,48 @@
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1375px; // antes 1100px, ahora 1100 * 1.25
+  margin: 0 auto 2rem auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1250px; // antes 1000px, ahora 1000 * 1.25
+  padding-bottom: 1rem;
+  scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-arrow {
+  background: #222c;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  z-index: 2;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-arrow.left {
+  margin-right: 0.5rem;
+}
+.carousel-arrow.right {
+  margin-left: 0.5rem;
+}
+button {
+  transition: background 0.2s;
+}
