@@ -11,13 +11,14 @@ import { FooterComponent } from "../../components/footer/footer.component";
   selector: 'app-library',
   standalone: true,
   imports: [CommonModule, FormsModule, HeaderComponent, CardComponent, FooterComponent],
-  templateUrl: './library.html',
-  styleUrl: './library.scss'
+  templateUrl: './library.component.html',
+  styleUrl: './library.component.scss'
 })
 
 export class Library {
   games: Signal<Game[]>;
   sortKey = 'title';
+  sortOrder: 'asc' | 'desc' = 'asc';
 
   constructor(private gameService: GameService) {
     this.games = this.gameService.games;
@@ -29,13 +30,17 @@ export class Library {
   }
 
   sortedGames() {
-    const arr = this.games(); // Usa el signal para obtener los juegos actuales
+    const arr = this.games();
+    let sorted = [...arr];
     if (this.sortKey === 'title') {
-      return [...arr].sort((a, b) => a.title.localeCompare(b.title));
+      sorted.sort((a, b) => a.title.localeCompare(b.title));
     }
     if (this.sortKey === 'price') {
-      return [...arr].sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+      sorted.sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
     }
-    return arr;
+    if (this.sortOrder === 'desc') {
+      sorted.reverse();
+    }
+    return sorted;
   }
 }

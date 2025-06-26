@@ -12,4 +12,14 @@ export class CardComponent {
   @Input() description: string = '';
   @Input() price: number = 0;
   @Input() console: string = '';
+  @Input() genre: string = '';
+  @Input() multiplayer: boolean = false;
+  @Input() storyMode: boolean = false;
+  @Input() coop: boolean = false;
+  @Input() releaseYear: number = 0;
+  @Input() developer: string = '';
+  @Input() online: boolean = false;
+  @Input() freeToPlay: boolean = false;
+  @Input() crossplay: boolean = false;
+  @Input() singlePlayer: boolean = false;
 }
