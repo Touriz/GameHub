@@ -46,3 +46,6 @@
 button {
   transition: background 0.2s;
 }
+.carousel-arrow:disabled {
+  opacity: 0.4;
+}

@@ -1,26 +1,38 @@
-<app-header></app-header>
+<body class="bg-gray-800 text-white font-primary">
+  <app-header></app-header>
 
-<section class="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-8">
-  <div *ngFor="let genre of genres" class="mb-10">
-    <div class="carousel-container flex-col items-start">
-      <h2 class="font-primary text-2xl font-semibold mb-4 pl-2">{{ genre }}</h2>
-      <div class="w-full flex items-center">
-        <button class="carousel-arrow left" (click)="scrollLeft(genre)">&#8592;</button>
-        <div class="carousel-track flex overflow-x-auto gap-6 pb-4" [attr.id]="'carousel-' + genre">
-          <app-card
-            *ngFor="let game of gamesByGenre(genre)"
-            [imageUrl]="game.image_url"
-            [title]="game.title"
-            [description]="game.description"
-            [price]="game.price"
-            [console]="game.platform"
-            class="flex-shrink-0 w-72 sm:w-80 md:w-96"
-          ></app-card>
+  <section class="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-8">
+    <div *ngFor="let genre of genres" class="mb-10">
+      <div class="carousel-container flex-col items-start">
+        <h2 class="font-primary text-2xl font-semibold mb-4 pl-2">{{ genre }}</h2>
+        <div class="w-full flex items-center">
+          <button
+            class="carousel-arrow left"
+            (click)="scrollLeft(genre)"
+            [disabled]="!canScrollLeft(genre)">
+            &#8592;
+          </button>
+          <div class="carousel-track flex overflow-x-auto gap-6 pb-4" [attr.id]="'carousel-' + genre">
+            <app-card
+              *ngFor="let game of gamesByGenre(genre)"
+              [imageUrl]="game.image_url"
+              [title]="game.title"
+              [description]="game.description"
+              [price]="game.price"
+              [console]="game.platform"
+              class="flex-shrink-0 w-72 sm:w-80 md:w-96"
+            ></app-card>
+          </div>
+          <button
+            class="carousel-arrow right"
+            (click)="scrollRight(genre)"
+            [disabled]="!canScrollRight(genre)">
+            &#8594;
+          </button>
         </div>
-        <button class="carousel-arrow right" (click)="scrollRight(genre)">&#8594;</button>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+</body>
