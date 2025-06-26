@@ -1,8 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })
@@ -11,7 +12,7 @@ export class CardComponent {
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() price: number = 0;
-  @Input() console: string = '';
+  @Input() console: string | string[] = '';
   @Input() genre: string = '';
   @Input() multiplayer: boolean = false;
   @Input() storyMode: boolean = false;
@@ -22,4 +23,14 @@ export class CardComponent {
   @Input() freeToPlay: boolean = false;
   @Input() crossplay: boolean = false;
   @Input() singlePlayer: boolean = false;
+
+  getConsolesArray(): string[] {
+  if (Array.isArray(this.console)) {
+    return this.console;
+  }
+  if (typeof this.console === 'string' && this.console.includes(',')) {
+    return this.console.split(',').map(c => c.trim());
+  }
+  return this.console ? [this.console] : [];
+  }
 }

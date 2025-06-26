@@ -33,11 +33,40 @@ export class Storefront {
 
   scrollLeft(genre: string) {
     const el = document.getElementById('carousel-' + genre);
-    if (el) el.scrollBy({ left: -320, behavior: 'smooth' }); // 320 = ancho card + gap
+    if (el) {
+      const card = el.querySelector('app-card');
+      const cardWidth = card ? (card as HTMLElement).offsetWidth : 320;
+      const gap = 24; // gap-6 en Tailwind = 1.5rem = 24px
+      el.scrollBy({ left: -(cardWidth + gap), behavior: 'smooth' });
+    }
   }
 
   scrollRight(genre: string) {
     const el = document.getElementById('carousel-' + genre);
-    if (el) el.scrollBy({ left: 320, behavior: 'smooth' });
+    if (el) {
+      const card = el.querySelector('app-card');
+      const cardWidth = card ? (card as HTMLElement).offsetWidth : 320;
+      const gap = 24;
+      el.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
+    }
+  }
+
+  canScrollLeft(genre: string): boolean {
+    const el = document.getElementById('carousel-' + genre);
+    if (!el) return false;
+    // Habilita si el scroll es mayor que la mitad del ancho de una card (más gap)
+    const card = el.querySelector('app-card');
+    const cardWidth = card ? (card as HTMLElement).offsetWidth : 320;
+    const gap = 24;
+    return el.scrollLeft > (cardWidth + gap) / 2;
+  }
+
+  canScrollRight(genre: string): boolean {
+    const el = document.getElementById('carousel-' + genre);
+    if (!el) return false;
+    const card = el.querySelector('app-card');
+    const cardWidth = card ? (card as HTMLElement).offsetWidth : 320;
+    const gap = 24;
+    return el.scrollLeft + el.clientWidth < el.scrollWidth - (cardWidth + gap) / 2;
   }
 }

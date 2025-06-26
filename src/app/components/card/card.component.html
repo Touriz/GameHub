@@ -4,8 +4,19 @@
     <h3 class="text-xl font-bold">{{ title }}</h3>
     <p class="text-sm text-gray-300 mb-2">{{ description }}</p>
     <div class="flex items-center justify-between mt-2">
-      <span class="text-lg font-bold text-custom-accent">${{ price }}</span>
-      <span class="text-sm text-gray-400">{{ console }}</span>
+      <span class="text-lg font-bold" [ngClass]="freeToPlay ? 'text-green-400' : 'text-custom-accent'">
+        {{ freeToPlay ? 'F2P' : ('$' + price) }}
+      </span>
+      <span class="text-sm text-gray-400">
+        <ng-container *ngIf="getConsolesArray().length > 0">
+          <ng-container *ngFor="let c of getConsolesArray().slice(0,3); let i = index">
+            {{ c }}<span *ngIf="i < getConsolesArray().slice(0,3).length - 1">, </span>
+          </ng-container>
+          <span *ngIf="getConsolesArray().length > 3">
+            ({{ getConsolesArray().length - 3 }}..)
+          </span>
+        </ng-container>
+      </span>
     </div>
   </div>
 </div>
