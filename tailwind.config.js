@@ -11,9 +11,11 @@ module.exports = {
       'custom-button-bg': '#2E2F2C',
       'custom-card-bg': '#252529',
       'custom-subtext': '#A3A3A3',
+      'custom-text': '#E0E0E0',
       },
       fontFamily: {
-       primary: ['BurbankBigCondensed', 'sans-serif'],
+       primary: ['Rubik', 'sans-serif'],
+       logoPrimary: ['BurbankBigCondensed', 'sans-serif'],
        secondary: ['Inter_28pt-Regular', 'sans-serif'],
       },
     },

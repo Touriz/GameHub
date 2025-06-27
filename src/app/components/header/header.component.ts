@@ -1,6 +1,8 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, computed, EventEmitter, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LoginComponent } from "../login/login.component";
+import { UserAuthService } from '../../services/user-auth.service';
 
 
 @Component({
@@ -11,8 +13,18 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent {
   isMenuOpen = false;
+  isLoggedIn = computed(() => this.authService.isLoggedIn());
+
+   constructor(private authService: UserAuthService) {}
+
+   
+  @Output() openLogin = new EventEmitter<void>();
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

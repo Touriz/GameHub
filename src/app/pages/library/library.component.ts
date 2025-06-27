@@ -6,16 +6,18 @@ import { Game } from '../../models/game';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CardComponent } from "../../components/card/card.component";
 import { FooterComponent } from "../../components/footer/footer.component";
+import { LoginComponent } from "../../components/login/login.component";
 
 @Component({
   selector: 'app-library',
   standalone: true,
-  imports: [CommonModule, FormsModule, HeaderComponent, CardComponent, FooterComponent],
+  imports: [CommonModule, FormsModule, HeaderComponent, CardComponent, FooterComponent, LoginComponent],
   templateUrl: './library.component.html',
   styleUrl: './library.component.scss'
 })
 
 export class Library {
+  showLogin = false;
   games: Signal<Game[]>;
   sortKey = 'title';
   sortOrder: 'asc' | 'desc' = 'asc';
@@ -43,4 +45,5 @@ export class Library {
     }
     return sorted;
   }
+  
 }
