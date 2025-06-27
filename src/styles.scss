@@ -2,15 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
 @font-face {
   font-family: 'BurbankBigCondensed';
   src: url('/assets/fonts/BurbankBigCondensed.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+
 }
 
 body {
   font-family: 'BurbankBigCondensed', sans-serif;
-  -webkit-text-stroke: 0.3px #000;
-  text-stroke: 0.3px #000;
 }

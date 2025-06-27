@@ -4,7 +4,7 @@
     <a [routerLink]="['/']">
       <img src="/assets/static/logo.png" alt="Logo" class="h-10 w-10 mr-5 cursor-pointer" />
     </a>
-    <span class="text-3xl font-primary tracking-wide relative top-1">GAMEHUB</span>
+    <span class="text-3xl font-logoPrimary tracking-wide relative top-1">GAMEHUB</span>
     <nav>
       <ul class="flex gap-12 ml-8">
         <li><a [routerLink]="['/store']" class="text-lg font-secondary hover:text-custom-accent transition">Store</a></li>
@@ -32,12 +32,12 @@
   </nav>
 
   <!-- Centro: Barra de búsqueda -->
-  <div class="flex-1 flex justify-center  ml-5 mr-5">
+  <div class=" flex-1 flex justify-center  ml-5 mr-5">
     <div class="relative w-full max-w-md">
       <input
         type="text"
         placeholder="Search"
-        class="w-full bg-custom-button-bg text-lg px-4 py-2 pl-6 pt-2 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 pr-12 text-left placeholder:text-gray-400 placeholder:font-bold"
+        class="font-secondary w-full bg-custom-button-bg text-lg px-4 py-2 pl-6 pt-2 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 pr-12 text-left placeholder:text-gray-400 "
       />
       <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-300">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -49,8 +49,23 @@
   </div>
 
   <!-- Derecha: Botones -->
-  <div class="flex items-center gap-4 flex-shrink-0">
-    <button class="font-primary text-2xl bg-custom-card-bg px-7 py-2 rounded-lg text-white hover:bg-custom-button-bg transition">Log In</button>
-    <button class="font-primary text-2xl hidden lg:inline-flex bg-custom-accent px-5 py-2 rounded-lg text-black hover:bg-green-400 transition relative">Register</button>
-  </div>
+<div class="flex items-center gap-4 flex-shrink-0">
+  <ng-container *ngIf="!isLoggedIn(); else logged">
+    <button (click)="openLogin.emit()"
+      class="font-logoPrimary text-2xl bg-custom-card-bg px-7 py-2 rounded-lg text-white hover:bg-custom-button-bg transition"
+    >
+      LOG IN
+    </button>
+    <button class="font-logoPrimary text-2xl hidden lg:inline-flex bg-custom-accent px-5 py-2 rounded-lg text-black hover:bg-green-400 transition relative">
+      REGISTER
+    </button>
+  </ng-container>
+  <ng-template #logged>
+    <button (click)="logout()"
+      class="font-logoPrimary text-2xl bg-red-600 px-7 py-2 rounded-lg text-white hover:bg-red-700 transition"
+    >
+      LOG OUT
+    </button>
+  </ng-template>
+</div>
 </header>

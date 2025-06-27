@@ -5,15 +5,17 @@ import { CardComponent } from "../../components/card/card.component";
 import { Game } from '../../models/game';
 import { GameService } from '../../services/game.service';
 import { CommonModule } from '@angular/common';
+import { LoginComponent } from "../../components/login/login.component";
 
 @Component({
   selector: 'app-storefront',
-  imports: [HeaderComponent, FooterComponent, CardComponent, CommonModule],
+  imports: [HeaderComponent, FooterComponent, CardComponent, CommonModule, LoginComponent],
   templateUrl: './storefront.component.html',
   styleUrl: './storefront.component.scss'
 })
 export class Storefront {
   games: Signal<Game[]>;
+  showLogin = false;
 
   constructor(private gameService: GameService) {
     this.games = this.gameService.games;
@@ -69,4 +71,5 @@ export class Storefront {
     const gap = 24;
     return el.scrollLeft + el.clientWidth < el.scrollWidth - (cardWidth + gap) / 2;
   }
+
 }

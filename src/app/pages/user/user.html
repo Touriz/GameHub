@@ -1,1 +1,9 @@
-<p>user works!</p>
+<h2>Juegos en propiedad</h2>
+<ul>
+  <li *ngFor="let game of ownedGames">{{ game.title }}</li>
+</ul>
+
+<h2>Wishlist</h2>
+<ul>
+  <li *ngFor="let game of wishlist">{{ game.title }}</li>
+</ul>

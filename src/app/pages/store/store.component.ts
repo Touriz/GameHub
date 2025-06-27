@@ -6,14 +6,16 @@ import { Game } from '../../models/game';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CardComponent } from "../../components/card/card.component";
 import { FooterComponent } from "../../components/footer/footer.component";
+import { LoginComponent } from "../../components/login/login.component";
 
 @Component({
   selector: 'app-store',
-  imports: [CommonModule, FormsModule, HeaderComponent, CardComponent, FooterComponent],
+  imports: [CommonModule, FormsModule, HeaderComponent, CardComponent, FooterComponent, LoginComponent],
   templateUrl: './store.component.html',
   styleUrl: './store.component.scss'
 })
 export class StoreComponent {
+  showLogin = false;
   games: Signal<Game[]>;
   sortOrder: 'asc' | 'desc' = 'asc';
   sortKey = 'title';
@@ -94,9 +96,16 @@ export class StoreComponent {
       if (this.filter['vrSupport'] && !game.vrSupport) return false;
       if (this.filter['achievements'] && !game.achievements) return false;
       if (this.filter['mods'] && !game.mods) return false;
-      // Filtro por texto (título)
       if (this.searchText && !game.title.toLowerCase().includes(this.searchText.toLowerCase())) return false;
       return true;
     });
+  }
+
+  clearFilters() {
+    Object.keys(this.filter).forEach(key => this.filter[key] = false);
+  }
+
+  anyFilterActive(): boolean {
+    return Object.values(this.filter).some(v => v);
   }
 }
